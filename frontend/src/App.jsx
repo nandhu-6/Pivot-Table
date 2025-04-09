@@ -4,8 +4,8 @@ import * as XLSX from 'xlsx';
 
 function App() {
 
-  const [headerArr, setHeaderArr] = useState([]);
-  const [bodyArr, setBodyArr] = useState([]);
+  const [headerArr, setHeaderArr] = useState([]); //contains headers for thead
+  const [bodyArr, setBodyArr] = useState([]); //contains array body values of table for tbody
   const [data, setData] = useState([]);
 
   const fileInputRef = useRef();
@@ -54,6 +54,7 @@ function App() {
           console.error('Error parsing CSV file:', error);
         }
       });
+
     // } else if (fileType === 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet') {
     //   const reader = new FileReader();
     //   reader.onload = (event) => {
@@ -84,13 +85,15 @@ function App() {
         
     //   };
     //   reader.readAsArrayBuffer(file);
-    } else {
+    
+  } else {
       console.error('Please upload a valid CSV or XLSX file.');
     }
   };
 
   return (
     <div>
+      {/* input component */}
       <div className="flex flex-col items-end h-1/4">
       {/* Hidden input */}
       <input
@@ -111,8 +114,10 @@ function App() {
         Import File
       </button>
     </div>
-    
+
       {/* <input type="file" name='file' accept='.csv, .xlsx' onChange={handleFileUpload} /> */}
+
+      {/* table component */}
       <table className='table border-collapse border border-gray-600 mt-10 mx-auto'>
         <thead>
           <tr>
