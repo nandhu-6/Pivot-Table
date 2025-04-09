@@ -1,0 +1,5 @@
+@import "tailwindcss";
+
+#inputFile::-webkit-file-upload-button {
+    visibility: hidden;
+  }
